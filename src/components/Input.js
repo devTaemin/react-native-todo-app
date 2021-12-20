@@ -1,6 +1,7 @@
 import React from 'react';
 import { useWindowDimensions } from 'react-native';
 import styled from 'styled-components/native';
+import PropTypes from 'prop-types';
 
 const StyledInput = styled.TextInput.attrs(({ theme }) => ({
     placeholderTextColor: theme.main,
@@ -15,7 +16,7 @@ const StyledInput = styled.TextInput.attrs(({ theme }) => ({
     color: ${({ theme }) => theme.text };
 `;
 
-const Input = ({ placeholder }) => {
+const Input = ({ placeholder, value, onChangeText, onSubmitEditing }) => {
     const width = useWindowDimensions().width;
     return (
     <StyledInput 
@@ -26,7 +27,17 @@ const Input = ({ placeholder }) => {
     autoCorrect={false}
     returnKeyType="done"
     keyboardAppearance="dark"
+    value={value}
+    onChangeText={onChangeText}
+    onSubmitEditing={onSubmitEditing}
     />);
+}
+
+Input.propTypes = {
+    placeholder: PropTypes.string,
+    value: PropTypes.string.isRequired,
+    onChangeText: PropTypes.func.isRequired,
+    onSubmitEditing: PropTypes.func.isRequired,
 }
 
 export default Input;
