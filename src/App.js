@@ -16,7 +16,7 @@ const Title = styled.Text`
     font-weight: 600;
     color: ${({ theme }) => theme.main}
     align-self: flex-start;
-    margin: 0px 20px;
+    margin: 20px;
 `;
 
 export default function App() {
