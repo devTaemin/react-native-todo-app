@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { ThemeProvider } from 'styled-components/native';
 import { theme } from './theme';
 
-const Container = styled.View`
+const Container = styled.SafeAreaView`
     flex: 1;
     background-color: ${({ theme }) => theme.background};
     align-items: center;
