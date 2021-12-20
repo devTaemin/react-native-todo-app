@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'react-native';
 import styled, { ThemeProvider } from 'styled-components/native';
 import { theme } from './theme';
 
@@ -21,6 +22,10 @@ export default function App() {
     return (
         <ThemeProvider theme={theme}>
             <Container>
+                <StatusBar 
+                    barStyle='light-content'
+                    backgroundColor={theme.background}
+                />
                 <Title>TODO List</Title>
             </Container>
         </ThemeProvider>
