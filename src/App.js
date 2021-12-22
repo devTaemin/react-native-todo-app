@@ -28,9 +28,20 @@ const List = styled.ScrollView`
 export default function App() {
     const [newTask, setNewTask] = useState('');
 
+    const [tasks, setTasks] = useState({
+        '1': { id: '1', text: 'First', 'completed': false },
+        '2': { id: '2', text: 'Second', 'completed': true },
+        '3': { id: '3', text: 'Third', 'completed': false },
+        '4': { id: '4', text: 'Fourth', 'completed': false },
+    });
+
     const _addTask = () => {
-        alert(`Add: ${newTask}`);
+        const ID = Date.now().toString();
+        const newTaskObject = {
+            [ID]: { id: ID, text: newTask, completed: false },
+        };
         setNewTask('');
+        setTasks({ ...tasks, ...newTaskObject });
     }
 
     const _handleTextChange = text => {
@@ -38,6 +49,7 @@ export default function App() {
     }
 
     const width = useWindowDimensions().width;
+
 
 
     return (
@@ -56,10 +68,9 @@ export default function App() {
                 />
 
                 <List width={width}>
-                    <Task text="Hanbit" />
-                    <Task text="React Native" />
-                    <Task text="React Native Sample" />
-                    <Task text="Edit TODO Item" />
+                    {Object.values(tasks).reverse().map(item => (
+                        <Task key={item.id} text={item.text} />
+                    ))}
                 </List>
             </Container>
         </ThemeProvider>
